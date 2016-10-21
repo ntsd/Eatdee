@@ -30,17 +30,16 @@
                 android:id="@+id/nav_sync"
                 android:icon="@drawable/ic_menu_send"
                 android:title="Sync"
-                android:enabled="false"/>
+                />
             <item
                 android:id="@+id/nav_signout"
                 android:icon="@drawable/ic_menu_send"
                 android:title="Sign out"
-                android:enabled="false"/>
+                />
             <item
                 android:id="@+id/nav_signin"
                 android:icon="@drawable/ic_menu_send"
                 android:title="Sign in"
-                android:visibility="gone"
                 />
         </menu>
     </item>

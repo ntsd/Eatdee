@@ -22,7 +22,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".activitys.SigninActivity" />
-        <activity android:name=".activitys.FoodListActivity"></activity>
     </application>
 
 </manifest>

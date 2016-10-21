@@ -15,6 +15,9 @@
     <string name="login_with_facebook">Login with Facebook</string>
     <string name="login_with_google">Login with Google+</string>
 
+    //firebase
+    <!-- was "Signing up..." -->
+    <string name="progress_dialog_signing_up">Creating your shiny new account...</string>
     <!--
     For a list of all scopes, see:
     https://developers.google.com/identity/protocols/googlescopes

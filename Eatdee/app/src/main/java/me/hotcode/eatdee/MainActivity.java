@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -17,6 +18,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
+import me.hotcode.eatdee.adapters.MainContainerPagerAdapter;
 
 import com.firebase.client.Firebase;
 import com.firebase.ui.auth.AuthUI;
@@ -34,8 +36,11 @@ public class MainActivity extends AppCompatActivity
     TextView nav_header_name;
     TextView nav_header_email;
     ImageView nav_header_image;
+    ViewPager maincontainer_pager;
+
 
     FirebaseAuth auth;
+    int isLogin=0;
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -78,11 +83,15 @@ public class MainActivity extends AppCompatActivity
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+        maincontainer_pager = (ViewPager) findViewById(R.id.container);
+        maincontainer_pager.setAdapter(new MainContainerPagerAdapter(getSupportFragmentManager()));
+
         View headerLayout = navigationView.getHeaderView(0);
         //View headerLayout = navigationView.inflateHeaderView(R.layout.nav_header_main);
         nav_header_name = (TextView) headerLayout.findViewById(R.id.header_nav_username);
         nav_header_email = (TextView) headerLayout.findViewById(R.id.header_nav_email);
         nav_header_image = (ImageView)  headerLayout.findViewById(R.id.header_nav_image);
+
 
         Firebase.setAndroidContext(this);
         //check firebase auth
@@ -90,19 +99,11 @@ public class MainActivity extends AppCompatActivity
         if (auth.getCurrentUser() != null) {
             // already signed in
             setWhenSignIn();
+            isLogin = 1;
         } else {
             // not signed in
-            startActivityForResult(
-                    AuthUI.getInstance()
-                            .createSignInIntentBuilder()
-                            .setProviders(
-                                    AuthUI.EMAIL_PROVIDER
-//                                    ,AuthUI.GOOGLE_PROVIDER
-//                                    ,AuthUI.FACEBOOK_PROVIDER)
-                            )
-                            //.setLogo()
-                            .build(),
-                    RC_SIGN_IN);
+            setWhenNotSignIn();
+            isLogin = 0;
         }
     }
 
@@ -143,9 +144,9 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_home) {
-
+            maincontainer_pager.setCurrentItem(0);
         } else if (id == R.id.nav_daily) {
-
+            maincontainer_pager.setCurrentItem(1);
         } else if (id == R.id.nav_list) {
 
         } else if (id == R.id.nav_setting) {
@@ -154,7 +155,7 @@ public class MainActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_sync){
 
-        } else if (id == R.id.nav_signout){
+        } else if (id == R.id.nav_signout) {
             AuthUI.getInstance()
                     .signOut(this)
                     .addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -164,6 +165,19 @@ public class MainActivity extends AppCompatActivity
                             finish();
                         }
                     });
+        } else if (id == R.id.nav_signin) {
+            startActivityForResult(
+                    AuthUI.getInstance()
+                            .createSignInIntentBuilder()
+                            .setProviders(
+                                    AuthUI.EMAIL_PROVIDER
+                                    ,AuthUI.GOOGLE_PROVIDER
+                                    ,AuthUI.FACEBOOK_PROVIDER)
+                            .setLogo(R.drawable.eatdee_logo)
+                            //.setLogo()
+                            .build(),
+                    RC_SIGN_IN);
+
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -180,7 +194,15 @@ public class MainActivity extends AppCompatActivity
         nav_header_image.setImageBitmap(imagedownload.getBitmap());
 
         //set menu
-        navigationView.getMenu().findItem(R.id.nav_sync).setEnabled(true);
-        navigationView.getMenu().findItem(R.id.nav_signout).setEnabled(true);
+        navigationView.getMenu().findItem(R.id.nav_sync).setVisible(true);
+        navigationView.getMenu().findItem(R.id.nav_signout).setVisible(true);
+        navigationView.getMenu().findItem(R.id.nav_signin).setVisible(false);
+    }
+
+    void setWhenNotSignIn(){
+        //set menu
+        navigationView.getMenu().findItem(R.id.nav_sync).setVisible(false);
+        navigationView.getMenu().findItem(R.id.nav_signout).setVisible(false);
+        navigationView.getMenu().findItem(R.id.nav_signin).setVisible(true);
     }
 }
