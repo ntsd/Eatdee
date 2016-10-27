@@ -1,0 +1,42 @@
+<resources>
+    <string name="app_name">Eatdee</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="action_logout">Logout</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_login_method">LoginMethod</string>
+
+    //login method
+    <string name="login_with_facebook">Login with Facebook</string>
+    <string name="login_with_google">Login with Google+</string>
+
+    //firebase
+    <!-- was "Signing up..." -->
+    <string name="progress_dialog_signing_up">Creating your shiny new account...</string>
+    <!--
+    For a list of all scopes, see:
+    https://developers.google.com/identity/protocols/googlescopes
+-->
+    <string-array name="google_permissions">
+        <!-- Request permission to read the user's Google Drive files -->
+        <item>https://www.googleapis.com/auth/drive.readonly</item>
+    </string-array>
+    <!--
+    See:
+    https://developers.facebook.com/docs/facebook-login/android
+    https://developers.facebook.com/docs/facebook-login/permissions
+-->
+    <string-array name="facebook_permissions">
+        <!-- Request permission to know the user's birthday -->
+        <item>user_birthday</item>
+    </string-array>
+
+    <string name="facebook_app_id">1770012996613306</string>
+    <string name="title_activity_getting_started">GettingStarted</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+</resources>

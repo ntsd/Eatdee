@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "673629286467",
+    "firebase_url": "https://eatdee-d7951.firebaseio.com",
+    "project_id": "eatdee-d7951",
+    "storage_bucket": "eatdee-d7951.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:673629286467:android:50e9cc1fda086406",
+        "android_client_info": {
+          "package_name": "me.hotcode.eatdee"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "673629286467-nr2p35jhi5irr5eb3enhgaok7rem1g3t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAEpG-yKwMJhwoJVE-cMR85UF032I_-rF0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
