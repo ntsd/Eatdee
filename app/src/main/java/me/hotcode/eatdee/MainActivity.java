@@ -17,6 +17,7 @@ import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import me.hotcode.eatdee.activitys.SearchFoodActivity;
 import me.hotcode.eatdee.activitys.SetProfileActivity;
 import me.hotcode.eatdee.adapters.MainContainerPagerAdapter;
 
@@ -94,7 +95,7 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
 
 //        FoodUtils foodUtils = new FoodUtils();
-//        List<CompactFood> list_food = foodUtils.getFoodList("pizza",1);
+//        List<CompactFood> list_food = foodUtils.getFoodList("noodle",0);
 //        for(int i=0;i<list_food.size();i++){
 //            Log.e("food_print", list_food.get(i).getName());
 //        }
@@ -231,7 +232,11 @@ public class MainActivity extends AppCompatActivity
             mainContainerPager.setCurrentItem(1);
         } else if (id == R.id.nav_list) {
             mainContainerPager.setCurrentItem(2);
-        } else if (id == R.id.nav_setting) {
+        } else if (id == R.id.nav_search_food) {
+          Intent intent = new Intent(getApplicationContext(), SearchFoodActivity.class);
+            startActivity(intent);
+        }
+        else if (id == R.id.nav_setting) {
 
         } else if (id == R.id.nav_share) {
 

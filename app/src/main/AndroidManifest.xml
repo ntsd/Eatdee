@@ -25,7 +25,9 @@
             android:name=".activitys.GettingStartedActivity"
             android:label="@string/title_activity_getting_started"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".activitys.SetProfileActivity"></activity>
+        <activity android:name=".activitys.SetProfileActivity" />
+        <activity android:name=".activitys.SearchFoodActivity" />
+        <activity android:name=".activitys.ListSearchFoodActivity"></activity>
     </application>
 
 </manifest>

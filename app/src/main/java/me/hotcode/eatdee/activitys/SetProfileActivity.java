@@ -101,4 +101,10 @@ public class SetProfileActivity extends AppCompatActivity implements
         setResult(RESULT_OK, resultIntent);
         onBackPressed();
     }
+
+    //@Override
+    public void onBackPressed2() {
+        // do nothing.
+
+    }
 }

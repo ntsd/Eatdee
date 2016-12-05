@@ -15,6 +15,10 @@
             android:icon="@drawable/ic_menu_slideshow"
             android:title="Food List" />
         <item
+            android:id="@+id/nav_search_food"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="Search Food" />
+        <item
             android:id="@+id/nav_setting"
             android:icon="@drawable/ic_menu_manage"
             android:title="Setting" />

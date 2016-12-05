@@ -9,6 +9,10 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.fatsecret.platform.model.CompactFood;
+
+import java.util.List;
+
 import me.hotcode.eatdee.R;
 import me.hotcode.eatdee.models.ListFood;
 
@@ -17,9 +21,14 @@ import me.hotcode.eatdee.models.ListFood;
  */
 
 public class FoodListViewAdapter extends BaseAdapter {
-    ListFood[] listFoodsArray;
+    List<CompactFood> listCompactFood;
     Context context;
     ViewHolder holder;
+
+    public FoodListViewAdapter(Context context, List<CompactFood> listCompactFood) {
+        this.context = context;
+        this.listCompactFood = listCompactFood;
+    }
 
     private class ViewHolder {
         ImageView imageView;
@@ -27,7 +36,7 @@ public class FoodListViewAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return 0;
+        return listCompactFood.size();
     }
 
     @Override
@@ -37,7 +46,7 @@ public class FoodListViewAdapter extends BaseAdapter {
 
     @Override
     public long getItemId(int i) {
-        return listFoodsArray.length;
+        return i;
     }
 
     @Override
@@ -45,13 +54,17 @@ public class FoodListViewAdapter extends BaseAdapter {
         LayoutInflater mInflater = (LayoutInflater) context.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
         if (view == null) {
             view = mInflater.inflate(R.layout.list_food_row, null);
-            holder = new ViewHolder();
-            holder.imageView = (ImageView) view.findViewById(R.id.image_list_food);
-            view.setTag(holder);
+//            holder = new ViewHolder();
+//            holder.imageView = (ImageView) view.findViewById(R.id.image_list_food);
+            //view.setTag(holder);
             TextView name = (TextView) view.findViewById(R.id.name_list_food);
-            name.setText(listFoodsArray[i].getListName());
+            name.setText(listCompactFood.get(i).getName());
+//            TextView cal = (TextView) view.findViewById(R.id.brandName_list_food);
+//            cal.setText(listCompactFood.get(i).getBrandName());
+            TextView type = (TextView) view.findViewById(R.id.food_type_list_food);
+            type.setText(listCompactFood.get(i).getType());
         } else {
-            holder = (ViewHolder) view.getTag();
+//            holder = (ViewHolder) view.getTag();
         }
         return view;
     }
