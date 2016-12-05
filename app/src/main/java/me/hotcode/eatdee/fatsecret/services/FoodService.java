@@ -21,12 +21,12 @@ import java.util.List;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import com.fatsecret.platform.model.CompactFood;
-import com.fatsecret.platform.model.Food;
-import com.fatsecret.platform.utils.FoodUtility;
 
+import me.hotcode.eatdee.fatsecret.model.CompactFood;
+import me.hotcode.eatdee.fatsecret.model.Food;
 import me.hotcode.eatdee.fatsecret.services.*;
 import me.hotcode.eatdee.fatsecret.services.Response;
+import me.hotcode.eatdee.fatsecret.utils.FoodUtility;
 
 /**
  * This service class helps to get or search food items from fatsecret rest api

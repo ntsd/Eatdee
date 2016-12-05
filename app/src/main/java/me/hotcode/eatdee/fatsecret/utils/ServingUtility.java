@@ -22,7 +22,8 @@ import java.util.List;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import com.fatsecret.platform.model.Serving;
+import me.hotcode.eatdee.fatsecret.model.Serving;
+
 
 /**
  * This utility class helps to get detailed information about serving(s) for food or recipe item(s) from fatsecret rest api
@@ -38,7 +39,7 @@ public class ServingUtility {
 	 * @param json			json object representing nutritional information of the food
 	 * @return				food nutrient values according to serving sizes
 	 */
-	public static Serving parseServingFromJSONObject(JSONObject json) {		
+	public static Serving parseServingFromJSONObject(JSONObject json) {
 		Serving serving = new Serving();
 
 		try {
@@ -208,7 +209,7 @@ public class ServingUtility {
 	 * @param array			json array representing a list of nutrient values according to different serving sizes for a food
 	 * @return				list of food nutrient values according to different serving sizes
 	 */
-	public static List<Serving> parseServingsFromJSONArray(JSONArray array) {
+	public static List<Serving> parseServingsFromJSONArray(JSONArray array) throws Exception{
 		List<Serving> servings = new ArrayList<Serving>();
 		
 		for(int i = 0; i < array.length(); i++) {

@@ -30,6 +30,12 @@
             android:layout_height="wrap_content"
             android:textColor="@color/bodyTextColor"
             />
+        <TextView
+            android:id="@+id/cal_list_food"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/bodyTextColor"
+            />
     </LinearLayout>
 
 </LinearLayout>

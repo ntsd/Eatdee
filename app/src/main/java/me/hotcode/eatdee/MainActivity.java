@@ -3,6 +3,7 @@ package me.hotcode.eatdee;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.View;
@@ -21,7 +22,6 @@ import me.hotcode.eatdee.activitys.SearchFoodActivity;
 import me.hotcode.eatdee.activitys.SetProfileActivity;
 import me.hotcode.eatdee.adapters.MainContainerPagerAdapter;
 
-import com.fatsecret.platform.model.CompactFood;
 import com.firebase.client.Firebase;
 import com.firebase.ui.auth.AuthUI;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -33,9 +33,12 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import me.hotcode.eatdee.fatsecret.model.Food;
+import me.hotcode.eatdee.models.ListFood;
 import me.hotcode.eatdee.models.Profile;
 import me.hotcode.eatdee.utils.FoodUtils;
 import me.hotcode.eatdee.utils.ImageLoadTask;
@@ -58,6 +61,9 @@ public class MainActivity extends AppCompatActivity
     DatabaseReference profileRef;
     Profile currentProfile;
     int canGetCurrentProfile = 0;
+
+    DatabaseReference foodListsRef = rootRef.child("foodlists");
+    List<ListFood> listOfListFood;
 
     FirebaseAuth auth;
     int isLogin = 0;
@@ -112,15 +118,6 @@ public class MainActivity extends AppCompatActivity
             Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
             setSupportActionBar(toolbar);
 
-//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
-//            }
-//        });
-
             DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
 
             ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -131,6 +128,22 @@ public class MainActivity extends AppCompatActivity
 
             navigationView = (NavigationView) findViewById(R.id.nav_view);
             navigationView.setNavigationItemSelectedListener(this);
+
+            foodListsRef.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    listOfListFood = new ArrayList<>();
+                    for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
+                        ListFood listFood = postSnapshot.getValue(ListFood.class);
+                        listOfListFood.add(listFood);
+                    }
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
 
             profilesRef.addValueEventListener(new ValueEventListener() {
                 @Override
@@ -144,7 +157,7 @@ public class MainActivity extends AppCompatActivity
                         else {
                             Log.d("currentProfile:", currentProfile.toString());
                             canGetCurrentProfile = 1;
-                            containerPagerAdapter = new MainContainerPagerAdapter(getSupportFragmentManager(), currentProfile);
+                            containerPagerAdapter = new MainContainerPagerAdapter(getSupportFragmentManager(), currentProfile, listOfListFood);
 
                             mainContainerPager = (ViewPager) findViewById(R.id.container);
                             mainContainerPager.setAdapter(containerPagerAdapter);

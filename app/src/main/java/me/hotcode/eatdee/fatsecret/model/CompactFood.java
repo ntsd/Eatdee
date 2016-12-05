@@ -15,6 +15,11 @@
  */
 package me.hotcode.eatdee.fatsecret.model;
 
+import android.util.Log;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 /**
  * This class represents summary information about the food item.
  *
@@ -40,6 +45,14 @@ public class CompactFood {
 
 	/** The brand name, only when food_type is "Brand" */
 	protected String brandName;
+
+	protected int calorie;
+	protected float protein;
+	protected float fat;
+	protected float carbohydrates;
+	protected int per;
+	String[] descriptionArraySplit;
+
 	
 	/**
 	 * Returns the name of the food
@@ -128,6 +141,7 @@ public class CompactFood {
 	 * @param		description the short description of the food
 	 */
 	public void setDescription(String description) {
+		descriptionArraySplit = description.split(":");
 		this.description = description;
 	}
 
@@ -147,5 +161,61 @@ public class CompactFood {
 	 */
 	public void setBrandName(String brandName) {
 		this.brandName = brandName;
+	}
+
+	public int getCalorie() {
+		String calString = descriptionArraySplit[1];
+		Pattern p = Pattern.compile("[0-9]*\\.?[0-9]+");
+
+		Matcher m = p.matcher(calString);
+		while (m.find()) {
+			calorie = Integer.parseInt(m.group());
+		}
+
+		return calorie;
+	}
+
+	public float getProtein() {
+		String proteinString = descriptionArraySplit[4];
+		Pattern p = Pattern.compile("[0-9]*\\.?[0-9]+");
+
+		Matcher m = p.matcher(proteinString);
+		while (m.find()) {
+			protein = Float.parseFloat(m.group());
+		}
+		return protein;
+	}
+
+	public float getFat() {
+		String fatString = descriptionArraySplit[2];
+		Pattern p = Pattern.compile("[0-9]*\\.?[0-9]+");
+
+		Matcher m = p.matcher(fatString);
+		while (m.find()) {
+			fat = Float.parseFloat(m.group());
+		}
+		return fat;
+	}
+
+	public float getCarbohydrates() {
+		String carbString = descriptionArraySplit[3];
+		Pattern p = Pattern.compile("[0-9]*\\.?[0-9]+");
+
+		Matcher m = p.matcher(carbString);
+		while (m.find()) {
+			carbohydrates = Float.parseFloat(m.group());
+		}
+		return carbohydrates;
+	}
+
+	public int getPer() {
+		String perString = descriptionArraySplit[0];
+		Pattern p = Pattern.compile("[0-9]*\\.?[0-9]+");
+
+		Matcher m = p.matcher(perString);
+		while (m.find()) {
+			per = Integer.parseInt(m.group());
+		}
+		return per;
 	}
 }

@@ -3,11 +3,13 @@ package me.hotcode.eatdee.utils;
 import android.os.AsyncTask;
 import android.util.Log;
 
-import com.fatsecret.platform.model.CompactFood;
-import com.fatsecret.platform.services.FoodService;
-import com.fatsecret.platform.services.Response;
+
 
 import java.util.List;
+
+import me.hotcode.eatdee.fatsecret.model.CompactFood;
+import me.hotcode.eatdee.fatsecret.services.FoodService;
+import me.hotcode.eatdee.fatsecret.services.Response;
 
 /**
  * Created by Jiravat on 27/10/2559.

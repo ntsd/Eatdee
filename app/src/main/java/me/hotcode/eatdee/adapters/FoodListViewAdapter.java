@@ -9,11 +9,10 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.fatsecret.platform.model.CompactFood;
-
 import java.util.List;
 
 import me.hotcode.eatdee.R;
+import me.hotcode.eatdee.fatsecret.model.CompactFood;
 import me.hotcode.eatdee.models.ListFood;
 
 /**
@@ -36,6 +35,9 @@ public class FoodListViewAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
+        if(listCompactFood == null){
+            return 0;
+        }
         return listCompactFood.size();
     }
 
@@ -63,6 +65,8 @@ public class FoodListViewAdapter extends BaseAdapter {
 //            cal.setText(listCompactFood.get(i).getBrandName());
             TextView type = (TextView) view.findViewById(R.id.food_type_list_food);
             type.setText(listCompactFood.get(i).getType());
+            TextView cal = (TextView) view.findViewById(R.id.cal_list_food);
+            type.setText(""+listCompactFood.get(i).getCalorie());
         } else {
 //            holder = (ViewHolder) view.getTag();
         }

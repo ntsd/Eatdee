@@ -6,12 +6,12 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.ListView;
 
-import com.fatsecret.platform.model.CompactFood;
 
 import java.util.List;
 
 import me.hotcode.eatdee.R;
 import me.hotcode.eatdee.adapters.FoodListViewAdapter;
+import me.hotcode.eatdee.fatsecret.model.CompactFood;
 import me.hotcode.eatdee.utils.FoodUtils;
 
 public class ListSearchFoodActivity extends AppCompatActivity {

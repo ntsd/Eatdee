@@ -15,15 +15,18 @@
  */
 package me.hotcode.eatdee.fatsecret.utils;
 
+import android.util.Log;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import com.fatsecret.platform.model.Food;
-import com.fatsecret.platform.model.Serving;
-import com.fatsecret.platform.model.CompactFood;
+import me.hotcode.eatdee.fatsecret.model.CompactFood;
+import me.hotcode.eatdee.fatsecret.model.Food;
+import me.hotcode.eatdee.fatsecret.model.Serving;
+
 
 /**
  * This utility class helps to get detailed information about food item(s) from fatsecret rest api
@@ -39,7 +42,7 @@ public class FoodUtility {
 	 * @param json			json object representing of the food
 	 * @return				detailed information about the food
 	 */
-	public static Food parseFoodFromJSONObject(JSONObject json) {
+	public static Food parseFoodFromJSONObject(JSONObject json) throws Exception{
 		String name = json.getString("food_name");
 		String url = json.getString("food_url");
 		String type = json.getString("food_type");
@@ -92,13 +95,14 @@ public class FoodUtility {
 	 * @param json			json object representing of the food
 	 * @return				compact food object from the json
 	 */
-	public static CompactFood parseCompactFoodFromJSONObject(JSONObject json) {
-		
+	public static CompactFood parseCompactFoodFromJSONObject(JSONObject json) throws Exception{
+		//Log.d("food json", json.toString());
 		String name = json.getString("food_name");
 		String url = json.getString("food_url");
 		String type = json.getString("food_type");
 		String description = json.getString("food_description");
 		Long id = Long.parseLong(json.getString("food_id"));
+//		int calorie = json.getString("food_description");
 
 		CompactFood food = new CompactFood();
 		
@@ -107,6 +111,7 @@ public class FoodUtility {
 		food.setType(type);
 		food.setDescription(description);
 		food.setId(id);
+//		food.setCalorie();
 		
 		return food;
 	}
@@ -117,7 +122,7 @@ public class FoodUtility {
 	 * @param array			json array representing a list of compact food
 	 * @return				list of compact food items
 	 */
-	public static List<CompactFood> parseCompactFoodListFromJSONArray(JSONArray array) {
+	public static List<CompactFood> parseCompactFoodListFromJSONArray(JSONArray array) throws Exception{
 		List<CompactFood> foods = new ArrayList<CompactFood>();
 		
 		for(int i = 0; i < array.length(); i++) {

@@ -1,26 +1,21 @@
 package me.hotcode.eatdee.models;
 
-import com.fatsecret.platform.model.CompactFood;
 
+
+import java.io.Serializable;
 import java.util.List;
+
+import me.hotcode.eatdee.fatsecret.model.CompactFood;
 
 /**
  * Created by Jiravat on 27/10/2559.
  */
 
-public class ListFood {
+public class ListFood implements Serializable {
     String listName;
     List<CompactFood> listFood;
+    String description;
     String imageUrl;
-    String address;
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
 
     public String getListName() {
         return listName;
@@ -44,5 +39,13 @@ public class ListFood {
 
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

@@ -28,12 +28,13 @@ import java.util.List;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import com.fatsecret.platform.model.Category;
-import com.fatsecret.platform.model.CompactRecipe;
-import com.fatsecret.platform.model.Direction;
-import com.fatsecret.platform.model.Ingredient;
-import com.fatsecret.platform.model.Recipe;
-import com.fatsecret.platform.model.Serving;
+import me.hotcode.eatdee.fatsecret.model.Category;
+import me.hotcode.eatdee.fatsecret.model.CompactRecipe;
+import me.hotcode.eatdee.fatsecret.model.Direction;
+import me.hotcode.eatdee.fatsecret.model.Ingredient;
+import me.hotcode.eatdee.fatsecret.model.Recipe;
+import me.hotcode.eatdee.fatsecret.model.Serving;
+
 
 public class RecipeUtility {
 
@@ -43,7 +44,7 @@ public class RecipeUtility {
 	 * @param json			json object representing of the recipe
 	 * @return				detailed information about the recipe
 	 */
-	public static Recipe parseRecipeFromJSONObject(JSONObject json) {
+	public static Recipe parseRecipeFromJSONObject(JSONObject json) throws Exception{
 		String name = json.getString("recipe_name");
 		String url = json.getString("recipe_url");
 		String description = json.getString("recipe_description");
@@ -201,7 +202,7 @@ public class RecipeUtility {
 	 * @param json			json object representing of the recipe
 	 * @return				compact recipe item
 	 */
-	public static CompactRecipe parseCompactRecipeFromJSONObject(JSONObject json) {
+	public static CompactRecipe parseCompactRecipeFromJSONObject(JSONObject json) throws Exception{
 
 		String name = json.getString("recipe_name");
 		String url = json.getString("recipe_url");
@@ -233,7 +234,7 @@ public class RecipeUtility {
 	 * @param array			json array representing a list of compact recipe
 	 * @return				list of compact recipe items
 	 */
-	public static List<CompactRecipe> parseCompactRecipeListFromJSONArray(JSONArray array) {
+	public static List<CompactRecipe> parseCompactRecipeListFromJSONArray(JSONArray array) throws Exception{
 		List<CompactRecipe> recipes = new ArrayList<CompactRecipe>();
 		for(int i = 0; i < array.length(); i++) {
 			JSONObject obj = array.getJSONObject(i);
@@ -249,7 +250,7 @@ public class RecipeUtility {
 	 * @param json			json object representing of the category
 	 * @return				the category that the recipe is classified under
 	 */
-	public static Category parseJsonToCategory(JSONObject json) {
+	public static Category parseJsonToCategory(JSONObject json) throws Exception{
 		String url = json.getString("recipe_category_url");
 		String name = json.getString("recipe_category_name");
 		
@@ -266,7 +267,7 @@ public class RecipeUtility {
 	 * @param json			json object representing of the direction
 	 * @return				direction involved in creating the recipe
 	 */
-	public static Direction parseJsonToDirection(JSONObject json) {
+	public static Direction parseJsonToDirection(JSONObject json) throws Exception{
 		Integer number = Integer.parseInt(json.getString("direction_number"));
 		String description = json.getString("direction_description");
 
@@ -284,7 +285,7 @@ public class RecipeUtility {
 	 * @param json			json object representing of the ingredient
 	 * @return				detailed information about the ingredient
 	 */
-	public static Ingredient parseJsonToIngredient(JSONObject json) {
+	public static Ingredient parseJsonToIngredient(JSONObject json) throws Exception{
 		
 		Long foodId = Long.parseLong(json.getString("food_id"));
 		Long servingId = Long.parseLong(json.getString("serving_id"));
