@@ -5,9 +5,20 @@
     tools:context="me.hotcode.eatdee.fragments.DiaryFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="diary_fragment" />
+        android:fillViewport="true"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+
+        </LinearLayout>
+    </ScrollView>
+
 
 </FrameLayout>

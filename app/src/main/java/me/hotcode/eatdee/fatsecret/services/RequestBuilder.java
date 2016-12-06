@@ -201,7 +201,8 @@ public class RequestBuilder {
 		List<String> params = new ArrayList<String>(Arrays.asList(generateOauthParams()));
 		String[] template = new String[1];
 		params.add("method=foods.search");
-		params.add("max_results=50");
+		//params.add("max_results=50");
+		params.add("max_results=5");
 		params.add("page_number=" + pageNumber);
 		params.add("search_expression=" + encode(query));
 		params.add("oauth_signature=" + sign(HTTP_METHOD, APP_URL, params.toArray(template)));
@@ -236,7 +237,8 @@ public class RequestBuilder {
 		List<String> params = new ArrayList<String>(Arrays.asList(generateOauthParams()));
 		String[] template = new String[1];
 		params.add("method=recipes.search");
-		params.add("max_results=50");
+		//params.add("max_results=50");
+		params.add("max_results=5");
 		params.add("page_number=" + pageNumber);
 		params.add("search_expression=" + encode(query));
 		params.add("oauth_signature=" + sign(HTTP_METHOD, APP_URL, params.toArray(template)));

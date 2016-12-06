@@ -59,13 +59,13 @@ public class FoodListViewAdapter extends BaseAdapter {
 //            holder = new ViewHolder();
 //            holder.imageView = (ImageView) view.findViewById(R.id.image_list_food);
             //view.setTag(holder);
-            TextView name = (TextView) view.findViewById(R.id.name_list_food);
+            TextView name = (TextView) view.findViewById(R.id.name_food);
             name.setText(listCompactFood.get(i).getName());
 //            TextView cal = (TextView) view.findViewById(R.id.brandName_list_food);
 //            cal.setText(listCompactFood.get(i).getBrandName());
-            TextView type = (TextView) view.findViewById(R.id.food_type_list_food);
+            TextView type = (TextView) view.findViewById(R.id.type_food);
             type.setText(listCompactFood.get(i).getType());
-            TextView cal = (TextView) view.findViewById(R.id.cal_list_food);
+            TextView cal = (TextView) view.findViewById(R.id.cal_food);
             type.setText(""+listCompactFood.get(i).getCalorie());
         } else {
 //            holder = (ViewHolder) view.getTag();

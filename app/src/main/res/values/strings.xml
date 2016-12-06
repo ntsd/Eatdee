@@ -39,4 +39,5 @@
     <string name="facebook_app_id">1770012996613306</string>
     <string name="title_activity_getting_started">GettingStarted</string>
     <string name="section_format">Hello World from section: %1$d</string>
+    <string name="title_activity_add_list_food">AddListFoodActivity</string>
 </resources>

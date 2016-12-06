@@ -5,9 +5,13 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
+import java.io.Serializable;
+import java.util.List;
+
 import me.hotcode.eatdee.fragments.DiaryFragment;
 import me.hotcode.eatdee.fragments.FoodListFragment;
 import me.hotcode.eatdee.fragments.HomeFragment;
+import me.hotcode.eatdee.models.ListFood;
 import me.hotcode.eatdee.models.Profile;
 
 /**
@@ -21,13 +25,14 @@ public class MainContainerPagerAdapter extends FragmentPagerAdapter {
     Profile currentProfile;
     Bundle args;
 
-    public MainContainerPagerAdapter(FragmentManager fm, Profile currentProfile) {
+    public MainContainerPagerAdapter(FragmentManager fm, Profile currentProfile, List<ListFood> listOfListFood) {
         super(fm);
         this.currentProfile = currentProfile;
         //sent var to fragment home
         args = new Bundle();
         args.putInt("canGetCurrentProfile", 1);
         args.putSerializable("currentProfile",currentProfile);
+        args.putSerializable("listOfListFood", (Serializable) listOfListFood);
     }
 
 
@@ -40,11 +45,11 @@ public class MainContainerPagerAdapter extends FragmentPagerAdapter {
                 fragment = new HomeFragment();
                 fragment.setArguments(args);
                 return fragment;
+//            case 1:
+//                fragment = new DiaryFragment();
+//                fragment.setArguments(args);
+//                return fragment;
             case 1:
-                fragment = new DiaryFragment();
-                fragment.setArguments(args);
-                return fragment;
-            case 2:
                 fragment = new FoodListFragment();
                 fragment.setArguments(args);
                 return fragment;
@@ -56,6 +61,6 @@ public class MainContainerPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        return 3;
+        return 2;
     }
 }

@@ -17,6 +17,9 @@ package me.hotcode.eatdee.fatsecret.model;
 
 import android.util.Log;
 
+import java.io.Serializable;
+import java.util.Arrays;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -26,7 +29,7 @@ import java.util.regex.Pattern;
  * @author Saurabh Rane
  * @version 1.0
  */
-public class CompactFood {
+public class CompactFood implements Serializable{
 
 	/** Name of the food, not including the brand name */
 	protected String name;
@@ -51,7 +54,7 @@ public class CompactFood {
 	protected float fat;
 	protected float carbohydrates;
 	protected int per;
-	String[] descriptionArraySplit;
+	List<String> descriptionArraySplit;
 
 	
 	/**
@@ -141,7 +144,7 @@ public class CompactFood {
 	 * @param		description the short description of the food
 	 */
 	public void setDescription(String description) {
-		descriptionArraySplit = description.split(":");
+		descriptionArraySplit = Arrays.asList(description.split(":"));
 		this.description = description;
 	}
 
@@ -164,7 +167,7 @@ public class CompactFood {
 	}
 
 	public int getCalorie() {
-		String calString = descriptionArraySplit[1];
+		String calString = descriptionArraySplit.get(1);
 		Pattern p = Pattern.compile("[0-9]*\\.?[0-9]+");
 
 		Matcher m = p.matcher(calString);
@@ -176,7 +179,7 @@ public class CompactFood {
 	}
 
 	public float getProtein() {
-		String proteinString = descriptionArraySplit[4];
+		String proteinString = descriptionArraySplit.get(4);
 		Pattern p = Pattern.compile("[0-9]*\\.?[0-9]+");
 
 		Matcher m = p.matcher(proteinString);
@@ -187,7 +190,7 @@ public class CompactFood {
 	}
 
 	public float getFat() {
-		String fatString = descriptionArraySplit[2];
+		String fatString = descriptionArraySplit.get(2);
 		Pattern p = Pattern.compile("[0-9]*\\.?[0-9]+");
 
 		Matcher m = p.matcher(fatString);
@@ -198,7 +201,7 @@ public class CompactFood {
 	}
 
 	public float getCarbohydrates() {
-		String carbString = descriptionArraySplit[3];
+		String carbString = descriptionArraySplit.get(3);
 		Pattern p = Pattern.compile("[0-9]*\\.?[0-9]+");
 
 		Matcher m = p.matcher(carbString);
@@ -209,7 +212,7 @@ public class CompactFood {
 	}
 
 	public int getPer() {
-		String perString = descriptionArraySplit[0];
+		String perString = descriptionArraySplit.get(0);
 		Pattern p = Pattern.compile("[0-9]*\\.?[0-9]+");
 
 		Matcher m = p.matcher(perString);

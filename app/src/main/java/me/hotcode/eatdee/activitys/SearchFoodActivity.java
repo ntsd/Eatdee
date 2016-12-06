@@ -11,7 +11,18 @@ import me.hotcode.eatdee.R;
 
 public class SearchFoodActivity extends AppCompatActivity implements View.OnClickListener{
     String foodName;
-    final int foodListIntentResultode = 1;
+    final int SEARCH_RESULT_CODE = 69;
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(resultCode == RESULT_OK){
+            if(requestCode == SEARCH_RESULT_CODE){
+                setResult(RESULT_OK, data);
+                finish();
+            }
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -25,6 +36,6 @@ public class SearchFoodActivity extends AppCompatActivity implements View.OnClic
         foodName = ((EditText)findViewById(R.id.foodNameEditText)).getText().toString();
         Intent foodListIntent  = new Intent(getApplicationContext(), ListSearchFoodActivity.class);
         foodListIntent.putExtra("foodName", foodName);
-        startActivityForResult(foodListIntent, foodListIntentResultode);
+        startActivityForResult(foodListIntent, SEARCH_RESULT_CODE);
     }
 }

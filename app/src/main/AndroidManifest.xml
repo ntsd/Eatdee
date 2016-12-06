@@ -27,7 +27,9 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".activitys.SetProfileActivity" />
         <activity android:name=".activitys.SearchFoodActivity" />
-        <activity android:name=".activitys.ListSearchFoodActivity"></activity>
+        <activity android:name=".activitys.ListSearchFoodActivity" />
+        <activity android:name=".activitys.AddListFoodActivity" />
+        <activity android:name=".activitys.ListFoodActivity"></activity>
     </application>
 
 </manifest>

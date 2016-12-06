@@ -26,6 +26,7 @@ public class HomeFragment extends Fragment {
     public TextView goal_calories_textview;
     PieChart calories_pic_chart;
     Profile currentProfile;
+    int currentCalories = 0;
 
     public HomeFragment() {
     }
@@ -34,7 +35,7 @@ public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        Log.d("canGetCurrentProfile",""+getArguments().getInt("canGetCurrentProfile"));
+        //Log.d("canGetCurrentProfile",""+getArguments().getInt("canGetCurrentProfile"));
         if(getArguments().getInt("canGetCurrentProfile")!=0) {
             currentProfile = (Profile) getArguments().getSerializable("currentProfile");
         }else{
@@ -47,9 +48,9 @@ public class HomeFragment extends Fragment {
 
         goal_calories_textview.setText(""+goal_calories);
         calories_pic_chart = (PieChart) view.findViewById(R.id.calories_pic_chart);
-        calories_pic_chart.addPieSlice(new PieModel("Goal calories", goal_calories, Color.parseColor("#FE6DA8")));
-        calories_pic_chart.addPieSlice(new PieModel("Remainning calorie", 2000, Color.parseColor("#56B7F1")));
-        calories_pic_chart.addPieSlice(new PieModel("Current calorie", 1000, Color.parseColor("#FED70E")));
+        //calories_pic_chart.addPieSlice(new PieModel("Goal calories", goal_calories, Color.parseColor("#FE6DA8")));
+        calories_pic_chart.addPieSlice(new PieModel("Remainning calorie", goal_calories-currentCalories, Color.parseColor("#56B7F1")));
+        calories_pic_chart.addPieSlice(new PieModel("Current calorie", currentCalories, Color.parseColor("#FED70E")));
         calories_pic_chart.startAnimation();
         return view;
     }

@@ -31,7 +31,7 @@
         android:layout_alignParentStart="true"
         android:layout_marginTop="11dp"
         android:id="@+id/textView2"
-        android:textSize="30sp" />
+        android:textSize="24sp" />
 
     <TextView
         android:text="Birth Date"
@@ -39,21 +39,11 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:id="@+id/birthlabel"
-        android:textSize="30sp"
+        android:textSize="24sp"
         android:layout_below="@+id/weightedit"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="numberSigned"
-        android:ems="10"
-        android:id="@+id/weightedit"
-        android:layout_toRightOf="@+id/textView2"
-        android:layout_marginLeft="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_alignBottom="@+id/textView2" />
+        android:layout_alignParentStart="true"
+        />
 
     <EditText
         android:layout_width="wrap_content"
@@ -71,22 +61,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/textView"
-        android:textSize="30sp"
+        android:textSize="24sp"
         android:layout_alignBottom="@+id/heightedit"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignRight="@+id/textView2"
         android:layout_alignEnd="@+id/textView2" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="date"
-        android:ems="10"
-        android:id="@+id/birthedit"
-        android:layout_alignBottom="@+id/birthlabel"
-        android:layout_alignLeft="@+id/weightedit"
-        android:layout_alignStart="@+id/weightedit" />
 
     <Button
         android:text="Save"
@@ -104,7 +84,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:id="@+id/textView4"
-        android:textSize="30sp"
+        android:textSize="24sp"
         android:layout_below="@+id/birthlabel"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
@@ -118,5 +98,26 @@
         android:layout_marginTop="12dp"
         android:layout_below="@+id/textView4"
         android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="numberSigned"
+        android:ems="10"
+        android:id="@+id/weightedit"
+        android:layout_alignBottom="@+id/textView2"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="date"
+        android:ems="10"
+        android:id="@+id/birthedit"
+        android:layout_above="@+id/textView4"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+       />
 
 </RelativeLayout>

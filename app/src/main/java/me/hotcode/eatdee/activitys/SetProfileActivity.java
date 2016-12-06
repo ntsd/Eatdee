@@ -99,11 +99,11 @@ public class SetProfileActivity extends AppCompatActivity implements
         Intent resultIntent = new Intent();
         resultIntent.putExtra("user_setting", new Profile(birth,Integer.parseInt(heightedit.getText().toString()),Integer.parseInt(weightedit.getText().toString()),sex, dropdown_ecercise_per_week.getSelectedItemPosition()));
         setResult(RESULT_OK, resultIntent);
-        onBackPressed();
+        finish();
     }
 
     //@Override
-    public void onBackPressed2() {
+    public void onBackPressed() {
         // do nothing.
 
     }

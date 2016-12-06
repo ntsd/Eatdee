@@ -47,6 +47,8 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     private static final int RC_SIGN_IN = 1;
     private static final int RC_GETTHING_START = 2;
+    final int ADD_LISTFOOD_RESULT_CODE = 55;
+    final int EDIT_LISTFOOD_RESULT_CODE = 66;
     NavigationView navigationView;
     TextView nav_header_name;
     TextView nav_header_email;
@@ -63,7 +65,7 @@ public class MainActivity extends AppCompatActivity
     int canGetCurrentProfile = 0;
 
     DatabaseReference foodListsRef = rootRef.child("foodlists");
-    List<ListFood> listOfListFood;
+    List<ListFood> listOfListFood = new ArrayList<>();
 
     FirebaseAuth auth;
     int isLogin = 0;
@@ -71,6 +73,7 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        Log.d("requestCode",""+requestCode);
         if (requestCode == RC_SIGN_IN) {
             if (resultCode == RESULT_OK) {
                 // user is signed in!
@@ -132,7 +135,7 @@ public class MainActivity extends AppCompatActivity
             foodListsRef.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
-                    listOfListFood = new ArrayList<>();
+                    listOfListFood.clear();
                     for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
                         ListFood listFood = postSnapshot.getValue(ListFood.class);
                         listOfListFood.add(listFood);
@@ -150,7 +153,7 @@ public class MainActivity extends AppCompatActivity
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     currentProfile = dataSnapshot.child(auth.getCurrentUser().getUid()).getValue(Profile.class);
                     try{
-                        if(currentProfile.toString() == null){
+                        if(currentProfile == null){
                             Intent getthingstartintent = new Intent(getApplicationContext(), SetProfileActivity.class);
                             startActivityForResult(getthingstartintent, RC_GETTHING_START);
                         }
@@ -164,8 +167,8 @@ public class MainActivity extends AppCompatActivity
                         }
                     }
                     catch (Exception e){
-                        Intent getthingstartintent = new Intent(getApplicationContext(), SetProfileActivity.class);
-                        startActivityForResult(getthingstartintent, RC_GETTHING_START);
+//                        Intent getthingstartintent = new Intent(getApplicationContext(), SetProfileActivity.class);
+//                        startActivityForResult(getthingstartintent, RC_GETTHING_START);
                     }
                 }
 
@@ -241,21 +244,23 @@ public class MainActivity extends AppCompatActivity
 
         if (id == R.id.nav_home) {
             mainContainerPager.setCurrentItem(0);
-        } else if (id == R.id.nav_daily) {
+        }
+//        else if (id == R.id.nav_daily) {
+//            mainContainerPager.setCurrentItem(1);
+//        }
+        else if (id == R.id.nav_list) {
             mainContainerPager.setCurrentItem(1);
-        } else if (id == R.id.nav_list) {
-            mainContainerPager.setCurrentItem(2);
         } else if (id == R.id.nav_search_food) {
           Intent intent = new Intent(getApplicationContext(), SearchFoodActivity.class);
             startActivity(intent);
         }
         else if (id == R.id.nav_setting) {
 
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_sync) {
-
-        } else if (id == R.id.nav_signout) {
+        }
+//        else if (id == R.id.nav_share) {
+//
+//        }
+        else if (id == R.id.nav_signout) {
             AuthUI.getInstance()
                     .signOut(this)
                     .addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -290,5 +295,9 @@ public class MainActivity extends AppCompatActivity
                         .build(),
                 RC_SIGN_IN);
 
+    }
+
+    public void editFoodList(String childName, ListFood listFood){
+        foodListsRef.child(childName).setValue(listFood);
     }
 }

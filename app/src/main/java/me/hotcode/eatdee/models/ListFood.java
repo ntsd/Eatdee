@@ -12,6 +12,7 @@ import me.hotcode.eatdee.fatsecret.model.CompactFood;
  */
 
 public class ListFood implements Serializable {
+    int id;
     String listName;
     List<CompactFood> listFood;
     String description;
@@ -47,5 +48,13 @@ public class ListFood implements Serializable {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }
