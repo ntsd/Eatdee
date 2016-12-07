@@ -2,35 +2,226 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     tools:context="me.hotcode.eatdee.fragments.HomeFragment">
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:orientation="vertical" android:layout_width="match_parent"
-        android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-            android:orientation="horizontal" android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/bghomeremainning"
-            >
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="24dp"
-                android:text="Goal:"/>
-            <TextView
-                android:id="@+id/goal_calories_textview"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="24dp"
-                android:text=" 2000"/>
-        </LinearLayout>
-        <org.eazegraph.lib.charts.PieChart
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/calories_pic_chart"
+            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:padding="8dp"
-            app:egLegendTextSize="18sp"
-            app:egUsePieRotation="true"
-            app:egValueTextSize="36sp"/>
-    </LinearLayout>
+            android:layout_height="wrap_content">
+
+            <android.support.v7.widget.CardView
+                android:layout_gravity="center"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="3dp"
+                card_view:cardCornerRadius="2dp"
+                card_view:contentPadding="8dp">
+                <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:orientation="horizontal" android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    >
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="24dp"
+                        android:text="Goal Calories:"/>
+                    <TextView
+                        android:id="@+id/goal_calories_textview"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="24dp"
+                        android:text=" 2000"/>
+                </LinearLayout>
+                <org.eazegraph.lib.charts.PieChart
+                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/calories_pic_chart"
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
+                    android:padding="8dp"
+                    app:egLegendTextSize="18sp"
+                    app:egUsePieRotation="true"
+                    app:egValueTextSize="36sp"/>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <org.eazegraph.lib.charts.PieChart
+                            xmlns:app="http://schemas.android.com/apk/res-auto"
+                            android:id="@+id/pro_pic_chart"
+                            android:layout_width="match_parent"
+                            android:layout_height="180dp"
+                            android:padding="4dp"
+                            app:egLegendTextSize="12sp"
+                            app:egUsePieRotation="true"
+                            app:egValueTextSize="12sp"
+                            android:layout_weight="1"/>
+                        <org.eazegraph.lib.charts.PieChart
+                            xmlns:app="http://schemas.android.com/apk/res-auto"
+                            android:id="@+id/fat_pic_chart"
+                            android:layout_width="match_parent"
+                            android:layout_height="180dp"
+                            android:padding="4dp"
+                            app:egLegendTextSize="12sp"
+                            app:egUsePieRotation="true"
+                            app:egValueTextSize="12sp"
+                            android:layout_weight="1"/>
+                        <org.eazegraph.lib.charts.PieChart
+                            xmlns:app="http://schemas.android.com/apk/res-auto"
+                            android:id="@+id/carb_pic_chart"
+                            android:layout_width="match_parent"
+                            android:layout_height="180dp"
+                            android:padding="4dp"
+                            app:egLegendTextSize="12sp"
+                            app:egUsePieRotation="true"
+                            app:egValueTextSize="12sp"
+                            android:layout_weight="1"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+            <android.support.v7.widget.CardView
+                android:layout_gravity="center"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="3dp"
+                card_view:cardCornerRadius="2dp"
+                card_view:contentPadding="8dp">
+                <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                   <TextView
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:text="Tips"/>
+                    <me.hotcode.eatdee.overwriteclass.MyListView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/tipsListView">
+                    </me.hotcode.eatdee.overwriteclass.MyListView>
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
+            <android.support.v7.widget.CardView
+                android:layout_gravity="center"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="3dp"
+                card_view:cardCornerRadius="2dp"
+                card_view:contentPadding="8dp">
+                <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Breakfast"/>
+                        <me.hotcode.eatdee.overwriteclass.MyListView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/breakfastFoodListView">
+                        </me.hotcode.eatdee.overwriteclass.MyListView>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <Button
+                            android:id="@+id/breakfastRecommendButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Recommends Food"/>
+                        <Button
+                            android:id="@+id/breakfastAddButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Add Food"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
+            <android.support.v7.widget.CardView
+                android:layout_gravity="center"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="3dp"
+                card_view:cardCornerRadius="2dp"
+                card_view:contentPadding="8dp">
+                <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Lunch"/>
+                        <me.hotcode.eatdee.overwriteclass.MyListView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/lunchFoodListView">
+                        </me.hotcode.eatdee.overwriteclass.MyListView>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <Button
+                            android:id="@+id/lunchRecommendButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Recommends Food"/>
+                        <Button
+                            android:id="@+id/lunchAddButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Add Food"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
+            <android.support.v7.widget.CardView
+                android:layout_gravity="center"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="3dp"
+                card_view:cardCornerRadius="2dp"
+                card_view:contentPadding="8dp">
+                <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Dinner"/>
+                        <me.hotcode.eatdee.overwriteclass.MyListView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/dinnerFoodListView">
+                        </me.hotcode.eatdee.overwriteclass.MyListView>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <Button
+                            android:id="@+id/dinnerRecommendButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Recommends Food"/>
+                        <Button
+                            android:id="@+id/dinnerAddButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Add Food"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
+        </LinearLayout>
+    </ScrollView>
+
 </FrameLayout>

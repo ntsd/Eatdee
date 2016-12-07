@@ -13,6 +13,10 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.ValueEventListener;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -93,6 +97,27 @@ public class FoodListFragment extends Fragment implements View.OnClickListener, 
         listFoodListView = (ListView)view.findViewById(R.id.listFoodListView);
         listFoodListView.setAdapter(arrayAdapter);
         listFoodListView.setOnItemClickListener(this);
+
+
+
+        ((MainActivity)getActivity()).foodListsRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                listOfListFood = new ArrayList<ListFood>();
+                for (DataSnapshot postSnapshot: dataSnapshot.getChildren()) {
+                    ListFood listFood = postSnapshot.getValue(ListFood.class);
+                    listOfListFood.add(listFood);
+                }
+                arrayAdapter.updateListOfListFood(listOfListFood);
+                arrayAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
         return view;
     }
 

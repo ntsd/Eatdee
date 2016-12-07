@@ -17,6 +17,7 @@ public class Profile implements Serializable {
     private int goal_calories;
     private int bmr;
     private int exercise_per_week;
+    Diary diary;
 
     public Profile() {
     }
@@ -89,5 +90,13 @@ public class Profile implements Serializable {
     @Override
     public String toString() {
         return "Date:"+this.birth.toString()+" height:"+height+" weight"+weight+" sex:"+sex+"goal_calories:"+goal_calories+"bmr:"+bmr;
+    }
+
+    public Diary getDiary() {
+        return diary;
+    }
+
+    public void setDiary(Diary diary) {
+        this.diary = diary;
     }
 }

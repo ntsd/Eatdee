@@ -33,6 +33,11 @@ public class FoodListViewAdapter extends BaseAdapter {
         ImageView imageView;
     }
 
+    public void updateFood(List<CompactFood> newlistCompactFood){
+        this.listCompactFood = newlistCompactFood;
+        this.notifyDataSetChanged();
+    }
+
     @Override
     public int getCount() {
         if(listCompactFood == null){
@@ -63,13 +68,17 @@ public class FoodListViewAdapter extends BaseAdapter {
             name.setText(listCompactFood.get(i).getName());
 //            TextView cal = (TextView) view.findViewById(R.id.brandName_list_food);
 //            cal.setText(listCompactFood.get(i).getBrandName());
-            TextView type = (TextView) view.findViewById(R.id.type_food);
-            type.setText(listCompactFood.get(i).getType());
             TextView cal = (TextView) view.findViewById(R.id.cal_food);
-            type.setText(""+listCompactFood.get(i).getCalorie());
+            cal.setText(""+listCompactFood.get(i).getCalorie());
+            ((TextView) view.findViewById(R.id.fat_food)).setText(""+listCompactFood.get(i).getFat());
+            ((TextView) view.findViewById(R.id.carb_food)).setText(""+listCompactFood.get(i).getCarbohydrates());
+            ((TextView) view.findViewById(R.id.pro_food)).setText(""+listCompactFood.get(i).getProtein());
+
         } else {
 //            holder = (ViewHolder) view.getTag();
         }
         return view;
     }
+
+
 }

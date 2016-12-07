@@ -3,7 +3,6 @@ package me.hotcode.eatdee;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.View;
@@ -59,16 +58,19 @@ public class MainActivity extends AppCompatActivity
     //database
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference rootRef = database.getReference();
-    DatabaseReference profilesRef = rootRef.child("profiles");
-    DatabaseReference profileRef;
-    Profile currentProfile;
+    public DatabaseReference profilesRef = rootRef.child("profiles");
+    public Profile currentProfile;
     int canGetCurrentProfile = 0;
 
-    DatabaseReference foodListsRef = rootRef.child("foodlists");
+    public DatabaseReference foodListsRef = rootRef.child("foodlists");
     List<ListFood> listOfListFood = new ArrayList<>();
 
-    FirebaseAuth auth;
+    public FirebaseAuth auth;
     int isLogin = 0;
+
+    public DatabaseReference getfoodListsRef(){
+        return foodListsRef;
+    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -194,9 +196,6 @@ public class MainActivity extends AppCompatActivity
             ImageLoadTask imagedownload = new ImageLoadTask("" + auth.getCurrentUser().getPhotoUrl());
             imagedownload.execute();
             nav_header_image.setImageBitmap(imagedownload.getBitmap());
-
-
-
 
         } else {
             setWhenNotSignIn();

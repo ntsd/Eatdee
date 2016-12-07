@@ -7,7 +7,7 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/eatdee_logo"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
@@ -29,7 +29,9 @@
         <activity android:name=".activitys.SearchFoodActivity" />
         <activity android:name=".activitys.ListSearchFoodActivity" />
         <activity android:name=".activitys.AddListFoodActivity" />
-        <activity android:name=".activitys.ListFoodActivity"></activity>
+        <activity android:name=".activitys.ListFoodActivity" />
+        <activity android:name=".activitys.RecommendFoodActivity" />
+        <activity android:name=".activitys.RecommendFoodListActivity"></activity>
     </application>
 
 </manifest>
